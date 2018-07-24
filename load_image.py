@@ -18,8 +18,8 @@ dataset_kind = sys.argv[3]
 #model_path ='C:/DiscoGAN/DIscoGAN2/discogan/models/face/'
 model_path ='./models/'
 
-#epoch = "-7.0"
-epoch = "-24.0"
+epoch = "-7.0"
+#epoch = "-24.0"
 
 
 

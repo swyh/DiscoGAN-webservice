@@ -22,11 +22,12 @@
 
     move_uploaded_file($tmp_name, $target);
 
-    $source = "C:/Bitnami/wampstack-7.1.19-1/apache2/htdocs/gan/input/".$image;
-    $destination = "C:/Bitnami/wampstack-7.1.19-1/apache2/htdocs/gan/output/".$image;
+    $source = "./input/".$image;
+    $destination = "./output/".$image;
 
     try{
-    exec("C:/Users/Public/AppData/Local/Continuum/anaconda3/python C:/DiscoGAN/DiscoGAN2/discogan/load_image.py "
+    exec("python ../load_image.py "
+    //C:/Users/Public/AppData/Local/Continuum/anaconda3/python
     .$source.' '.$destination.' '.$_POST['dataset'], $output);
 
 
