@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8">
+    <meta name="keywords" content="DiscoGAN">
+    <meta name="description" content="Free Web DiscoGAN">
+    <meta name="author" content="Kimyounghoon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to DiscoGAN</title>
+    <style>
+    b { text-align: center;}
+
+    </style>
+  </head>
+  <body>
+      <header>
+        <h1>DiscoGAN</h1>
+        <h3>Transpose handbags to shoes AND shoes to handbags.</h3>
+      </header>
+      <hr>
+
+      <article>
+        <form action='upload.php' method='POST' enctype='multipart/form-data'>
+          <label for="A"><div>
+              <image src="./img/A.jpg">
+              <image src="./img/pointer.jpg">
+              <image src="./img/AB.jpg">
+              <input type="radio" name="dataset" value="A" id="A" checked="checked">
+              <b>handbag->shoes</b></label>
+          </div>
+          <label for="B"><div>
+              <image src="./img/B.jpg">
+              <image src="./img/pointer.jpg">
+              <image src="./img/BA.jpg">
+              <input type="radio" name="dataset" id="B" value="B" >
+              <b>shoes->handbag</b></label>
+          </div>
+          <br>
+          image Name
+          <input type="text" id="name" name="name" placeholder="You can leave it blank."/></br>
+          image File
+          <input type="file" id="sreenshot" name="sreenshot" accept="image/*"><br>
+        <input type="submit" value="Submit" name="submit"/>
+        </form>
+      </article>
+  </body>
+</html>
