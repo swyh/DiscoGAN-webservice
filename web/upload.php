@@ -37,10 +37,10 @@
 
     echo "<h2>Create new thing!</h2>";
     echo "your input ";
-    echo '<img src="./output/'.$image.'A_0.jpg"></br>';
+    echo '<img src="./output/'.$image.'_A.jpg"></br>';
 
     echo "your output";
-    echo '<img src="./output/'.$image.'AB_0.jpg">';
+    echo '<img src="./output/'.$image.'_AB.jpg">';
     #echo phpinfo();
    ?>
 

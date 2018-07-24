@@ -4,6 +4,7 @@ import numpy as np
 from scipy import misc
 from torch.autograd import Variable
 import sys
+import model
 
 if len(sys.argv) < 4:
     print("please input file path, result path, dataset kind")
@@ -24,21 +25,19 @@ epoch = "-7.0"
 
 
 def get_model():
+    #torch.nn.Module.dump_patches = True
     generator_A = torch.load(model_path +'model_gen_A' + epoch)
     generator_B = torch.load(model_path +'model_gen_B' + epoch)
-    discriminator_A = torch.load(model_path +'model_dis_A' + epoch)
-    discriminator_B = torch.load(model_path +'model_dis_B' + epoch)
 
     if torch.cuda:
         generator_A = generator_A.cuda()
         generator_B = generator_B.cuda()
-        discriminator_A = discriminator_A.cuda()
-        discriminator_B = discriminator_B.cuda()
 
-    return generator_A, generator_B, discriminator_A, discriminator_B
+    return generator_A, generator_B
 
 # path 불러오기
 def get_real_image(image_size=64):
+    images = []
 
     print(file_path)
     image = cv2.imread(file_path)  # fn이 한글 경로가 포함되어 있으면 제대로 읽지 못함. binary로 바꿔서 처리하는 방법있음
@@ -50,21 +49,28 @@ def get_real_image(image_size=64):
     image = cv2.resize(image, (image_size, image_size))
     image = image.astype(np.float32) / 255.
     image = image.transpose(2, 0, 1)
+    images.append(image)
 
-    return image
+    if images:
+        print("push the stack")
+        images = np.stack(images)
+    else:
+        print("error, images is emtpy")
+
+    return images
 
 
 def save_image(name, image):
 
     print("save image")
-    image = image.cpu().data.numpy().transpose(1, 2, 0) * 255.
+    image = image[0].cpu().data.numpy().transpose(1, 2, 0) * 255.
     misc.imsave(result_path + "_" + name + '.jpg', image.astype(np.uint8)[:, :, ::-1])
 
 
 
 print("start")
 
-generator_A, generator_B, discriminator_A, discriminator_B = get_model()
+generator_A, generator_B = get_model()
 image = get_real_image()
 
 A = Variable(torch.FloatTensor(image))
@@ -81,3 +87,5 @@ else:
 save_image("A", A)
 save_image("AB", AB)
 #save_image("ABA", ABA)
+
+print("finish")
