@@ -1,5 +1,10 @@
 # DiscoGAN_webservice
 
+<p align="center">
+    <img src="./img/index.JPG", width="320">
+    <img src="./img/upload.JPG", width="320">
+</p>
+
 ## Prerequisites
 ### DiscoGAN
 - Python3
