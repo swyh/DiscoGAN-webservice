@@ -28,8 +28,8 @@ print(file_name)
 
 def get_model():
     #torch.nn.Module.dump_patches = True
-    generator_A = torch.load(model_path +'model_gen_A' + epoch)
-    generator_B = torch.load(model_path +'model_gen_B' + epoch)
+    generator_A = torch.load(os.path.join(model_path, 'model_gen_A') + epoch)
+    generator_B = torch.load(os.path.join(model_path, 'model_gen_B') + epoch)
 
     if torch.cuda:
         generator_A = generator_A.cuda()
