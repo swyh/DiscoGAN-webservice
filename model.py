@@ -1,11 +1,5 @@
 import torch
 import torch.nn as nn
-import torch.nn.functional as F
-
-from torch.autograd import Variable
-import ipdb
-
-import numpy as np
 
 kernel_sizes = [4,3,3]
 strides = [2,2,1]
