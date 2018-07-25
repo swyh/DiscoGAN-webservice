@@ -4,25 +4,27 @@ import numpy as np
 from scipy import misc
 from torch.autograd import Variable
 import sys
-import model
+import os
 
 if len(sys.argv) < 4:
-    print("please input file path, result path, dataset kind")
+    print("please input : python ../load_image.py [file path] [result path] [dataset kind(A or B)]")
     exit()
 
 file_path = sys.argv[1]
 result_path = sys.argv[2]
 dataset_kind = sys.argv[3]
 
-#result_path = 'C:/DiscoGAN/DiscoGAN2/discogan/test/result/'
-#model_path ='C:/DiscoGAN/DIscoGAN2/discogan/models/handbags2shoes/discogan/'
-#model_path ='C:/DiscoGAN/DIscoGAN2/discogan/models/face/'
-model_path ='./models/'
+
+model_path = os.path.dirname(os.path.abspath(__file__))  + '/models/'   # 이 파일이 존재한 곳의 models 폴더 경로
+file_name = os.path.splitext(os.path.basename(file_path))[0] # 파일명에서 확장자를 분리함
 
 epoch = "-7.0"
 #epoch = "-24.0"
 
-
+print(file_path)
+print(result_path)
+print(dataset_kind)
+print(file_name)
 
 def get_model():
     #torch.nn.Module.dump_patches = True
@@ -60,11 +62,11 @@ def get_real_image(image_size=64):
     return images
 
 
-def save_image(name, image):
+def save_image(kind, image):
 
     print("save image")
     image = image[0].cpu().data.numpy().transpose(1, 2, 0) * 255.
-    misc.imsave(result_path + "_" + name + '.jpg', image.astype(np.uint8)[:, :, ::-1])
+    misc.imsave(os.path.join(result_path,  file_name + "_" + kind + '.jpg'), image.astype(np.uint8)[:, :, ::-1])
 
 
 

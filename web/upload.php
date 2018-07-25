@@ -23,7 +23,7 @@
     move_uploaded_file($tmp_name, $target);
 
     $source = "./input/".$image;
-    $destination = "./output/".$image;
+    $destination = "./output";
 
     try{
     exec("python ../load_image.py "
@@ -37,10 +37,10 @@
 
     echo "<h2>Create new thing!</h2>";
     echo "your input ";
-    echo '<img src="./output/'.$image.'_A.jpg"></br>';
+    echo '<img src="./output/'.explode(".", $image)[0].'_A.jpg"></br>';
 
     echo "your output";
-    echo '<img src="./output/'.$image.'_AB.jpg">';
+    echo '<img src="./output/'.explode(".", $image)[0].'_AB.jpg">';
     #echo phpinfo();
    ?>
 
