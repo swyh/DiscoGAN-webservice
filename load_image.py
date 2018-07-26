@@ -7,7 +7,7 @@ import sys
 import os
 
 if len(sys.argv) < 4:
-    print("please input : python ../load_image.py [file path] [result path] [dataset kind(A or B)]")
+    print("please input : python load_image.py [file path] [result path] [dataset kind(A or B)]")
     exit()
 
 file_path = sys.argv[1]
