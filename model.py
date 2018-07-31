@@ -1,3 +1,5 @@
+# original source : https://github.com/SKTBrain/DiscoGAN/blob/master/discogan/model.py
+
 import torch
 import torch.nn as nn
 
@@ -140,5 +142,3 @@ class Generator(nn.Module):
 
     def forward(self, input):
         return self.main( input )
-
-
